@@ -54,14 +54,16 @@ export const updateProduct = async (req, res) => {
 
     const { name, price, discountedPrice, description, categoryId } = req.body;
 
+    let image = product.image;
+    let imagePublicId = product.imagePublicId;
+
     if (req.file) {
-      const publicId = product.imagePublicId;
-      if (publicId) {
-        await cloudinary.uploader.destroy(publicId);
+      if (imagePublicId) {
+        await cloudinary.uploader.destroy(imagePublicId);
       }
 
-      product.image = req.file.path;
-      product.imagePublicId = req.file.filename;
+      image = req.file.path;
+      imagePublicId = req.file.filename;
     }
 
     await product.update({
@@ -70,6 +72,8 @@ export const updateProduct = async (req, res) => {
       discountedPrice: discountedPrice ?? product.discountedPrice,
       description: description ?? product.description,
       categoryId: categoryId ?? product.categoryId,
+      image,
+      imagePublicId,
     });
 
     res.json(product);
@@ -77,6 +81,7 @@ export const updateProduct = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
 
 export const deleteProduct = async (req, res) => {
   try {

@@ -5,7 +5,7 @@ export default (sequelize, DataTypes) => {
     discountedPrice: DataTypes.DECIMAL,
     description: DataTypes.TEXT,
     image: DataTypes.STRING,
-    imagePublicId: DataTypes.STRING, // 👉 NEW FIELD
+    imagePublicId: DataTypes.STRING, 
     categoryId: DataTypes.INTEGER,
   });
 

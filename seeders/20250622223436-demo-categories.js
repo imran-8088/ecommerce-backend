@@ -1,4 +1,3 @@
-// seeders/xxxxxx-demo-categories.js
 
 export async function up(queryInterface, Sequelize) {
   await queryInterface.bulkInsert('Categories', [
