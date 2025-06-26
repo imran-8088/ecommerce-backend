@@ -1,4 +1,3 @@
-// controllers/category.controller.js
 import db from '../models/index.js';
 const { Category } = db;
 
