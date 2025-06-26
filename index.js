@@ -5,6 +5,8 @@ import productRoutes from './routes/product.routes.js';
 import orderRoutes from './routes/order.routes.js';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import categoryRoutes from './routes/category.routes.js';
+
 
 
 dotenv.config();
@@ -15,6 +17,7 @@ app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
+app.use('/api/categories', categoryRoutes);
 
 app.use('/api/orders', orderRoutes);
 app.use('/api/products', productRoutes);

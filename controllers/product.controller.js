@@ -28,7 +28,7 @@ export const addProduct = async (req, res) => {
 
 export const getAllProducts = async (req, res) => {
   try {
-    const products = await Product.findAll({ include: ['category'] });
+    const products = await Product.findAll({ include: ['category'], order: [['createdAt', 'DESC']] });
     res.json(products);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -99,3 +99,5 @@ export const deleteProduct = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+
